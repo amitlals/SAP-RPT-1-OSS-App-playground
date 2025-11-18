@@ -37,12 +37,16 @@ ENV/
 .env
 .env.local
 
-# Model cache
+# Model cache and downloaded models
 .cache/
-models/
-*.pth
-*.pt
-*.ckpt
+models/*.pth
+models/*.pt
+models/*.ckpt
+models/*.bin
+models/*.safetensors
+# But keep Python source files in models/
+!models/*.py
+!models/__init__.py
 
 # Data files (optional - uncomment if you don't want to track data)
 # data/*.csv
