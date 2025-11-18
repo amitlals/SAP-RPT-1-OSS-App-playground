@@ -1,6 +1,7 @@
 # SAP OpenSource Model Playground | SAP-RPT-1-OSS Model Beta
 
 A comprehensive SAP Playground application built with Gradio that integrates the SAP-RPT-1-OSS model for predictive analysis on SAP datasets. Features include synthetic data generation, interactive visualizations, live OData connectivity, AI-powered insights, and a playground for training custom models. 
+<img width="839" height="540" alt="image" src="https://github.com/user-attachments/assets/d6376079-2b83-422a-b4fd-51d517431ec2" />
 
 ## Features
 
