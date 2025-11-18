@@ -1,10 +1,10 @@
-# SAP Finance Dashboard with RPT-1-OSS Model
+# SAP OpenSource Model Playground | SAP-RPT-1-OSS Model Beta
 
-A comprehensive financial dashboard application built with Gradio that integrates the SAP-RPT-1-OSS model for predictive analysis on SAP finance datasets. Features include synthetic data generation, interactive visualizations, OData connectivity, AI-powered insights, and a playground for training custom models.
+A comprehensive SAP Playground application built with Gradio that integrates the SAP-RPT-1-OSS model for predictive analysis on SAP datasets. Features include synthetic data generation, interactive visualizations, live OData connectivity, AI-powered insights, and a playground for training custom models. 
 
 ## Features
 
-- **Multiple Synthetic SAP Finance Datasets**: General Ledger accounts, Financial Statements (P&L, Balance Sheet), and Sales Orders
+- **Multiple Synthetic SAP Datasets**: General Ledger accounts, Financial Statements (P&L, Balance Sheet), and Sales Orders
 - **Data Upload**: Upload custom CSV, Parquet, or JSON datasets for analysis
 - **Interactive Visualizations**: Financial charts and graphs using Plotly
 - **SAP-RPT-1-OSS Model Integration**: AI-powered predictions and analysis
@@ -17,7 +17,7 @@ A comprehensive financial dashboard application built with Gradio that integrate
 ### Prerequisites
 
 - Python 3.11 or higher
-- Hugging Face account (for model access)
+- Hugging Face account (for SAP model access)
 - SAP OData credentials (optional, for live data connection)
 
 ### Setup Steps
@@ -107,32 +107,6 @@ The SAP-RPT-1-OSS model supports both classification and regression tasks. For b
 - **Lightweight**: CPU with context size 2048, bagging factor 1
 
 The application automatically detects available resources and adjusts settings accordingly.
-
-## Deployment
-
-### GitHub Pages
-
-Since Gradio requires a Python backend, GitHub Pages deployment requires alternative approaches:
-
-1. **GitHub Actions**: Set up a workflow to run the Gradio app as a service
-2. **Alternative Hosting**: Deploy to platforms that support Python web apps:
-   - Hugging Face Spaces (recommended for Gradio apps)
-   - Streamlit Cloud
-   - Heroku
-   - Railway
-   - Render
-
-### Deploy to Hugging Face Spaces
-
-The easiest way to deploy this Gradio app is using Hugging Face Spaces:
-
-1. Create a new Space on [Hugging Face Spaces](https://huggingface.co/spaces)
-2. Select "Gradio" as the SDK
-3. Push this repository to your Space
-4. Add your `HUGGINGFACE_TOKEN` as a secret in Space settings
-5. The app will automatically deploy
-
-See `.github/workflows/deploy.yml` for deployment configuration examples.
 
 ## Project Structure
 
