@@ -13,7 +13,8 @@ A comprehensive SAP Playground application built with Gradio that integrates the
 - **Playground Tab**: Upload datasets, configure model parameters, train, and download predictions
 - **Modern UI**: Built with Gradio, a Python-based web framework
 
-## Installation
+## Installation or HuggingFace (whatever you like!)
+https://huggingface.co/spaces/amitgpt/sap-finance-dashboard-RPT-1-OSS 
 
 ### Prerequisites
 
