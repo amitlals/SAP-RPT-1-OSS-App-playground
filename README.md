@@ -3,8 +3,8 @@ title: SAP Finance Dashboard with RPT-1-OSS
 emoji: 📊
 colorFrom: purple
 colorTo: blue
-sdk: gradio
-sdk_version: 4.44.0
+sdk: docker
+app_port: 7860
 app_file: app_gradio.py
 pinned: false
 license: apache-2.0

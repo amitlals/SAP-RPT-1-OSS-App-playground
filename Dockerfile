@@ -7,7 +7,7 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV GRADIO_SERVER_NAME=0.0.0.0
-ENV GRADIO_SERVER_PORT=7862
+ENV GRADIO_SERVER_PORT=7860
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -38,11 +38,11 @@ COPY . .
 RUN mkdir -p /app/data
 
 # Expose port
-EXPOSE 7862
+EXPOSE 7860
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
-    CMD curl -f http://localhost:7862/ || exit 1
+    CMD curl -f http://localhost:7860/ || exit 1
 
 # Run the application
 CMD ["python", "app_gradio.py"]
