@@ -25,11 +25,12 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Install SAP-RPT-1-OSS from GitHub
-RUN pip install --no-cache-dir git+https://github.com/SAP-samples/sap-rpt-1-oss
+# Force compatible versions of gradio and huggingface_hub BEFORE sap-rpt-oss
+# gradio 4.44.1 requires huggingface_hub<0.25 (HfFolder was removed in 0.25+)
+RUN pip install --no-cache-dir "huggingface_hub>=0.23.0,<0.25.0" "gradio==4.44.1"
 
-# Force Gradio 4.x to be installed LAST (override any conflicting dependencies)
-RUN pip install --no-cache-dir --force-reinstall "gradio==4.44.1"
+# Install SAP-RPT-1-OSS from GitHub (after gradio to avoid version conflicts)
+RUN pip install --no-cache-dir --no-deps git+https://github.com/SAP-samples/sap-rpt-1-oss
 
 # Copy application code
 COPY . .

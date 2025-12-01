@@ -1,7 +1,7 @@
 pandas>=2.0.0
 numpy>=1.24.0
 git+https://github.com/SAP-samples/sap-rpt-1-oss
-huggingface_hub>=0.25.0
+huggingface_hub>=0.23.0,<0.25.0
 plotly>=5.17.0
 requests>=2.31.0
 python-dotenv>=1.0.0
