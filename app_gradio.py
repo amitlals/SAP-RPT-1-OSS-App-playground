@@ -1416,4 +1416,9 @@ if __name__ == "__main__":
     server_port = int(os.environ.get("GRADIO_SERVER_PORT", 7862))
     
     # Launch the app
-    app.launch(share=False, server_name=server_name, server_port=server_port, quiet=False)
+    app.launch(
+        server_name=server_name,
+        server_port=server_port,
+        share=False,
+        show_error=True
+    )
