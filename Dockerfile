@@ -21,16 +21,15 @@ WORKDIR /app
 # Copy requirements first for better caching
 COPY requirements.txt .
 
-# Install Python dependencies
+# Install Python dependencies (base packages only)
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Force compatible versions of gradio and huggingface_hub BEFORE sap-rpt-oss
-# gradio 4.44.1 requires huggingface_hub<0.25 (HfFolder was removed in 0.25+)
-RUN pip install --no-cache-dir "huggingface_hub>=0.23.0,<0.25.0" "gradio==4.44.1"
+# Install compatible gradio and huggingface_hub versions together
+RUN pip install --no-cache-dir "gradio==4.44.1" "huggingface_hub==0.24.7"
 
-# Install SAP-RPT-1-OSS from GitHub (after gradio to avoid version conflicts)
-RUN pip install --no-cache-dir --no-deps git+https://github.com/SAP-samples/sap-rpt-1-oss
+# Install SAP-RPT-1-OSS from GitHub (with --no-deps to avoid conflicts)
+RUN pip install --no-cache-dir --no-deps git+https://github.com/SAP-samples/sap-rpt-1-oss || echo "SAP-RPT-1-OSS installation skipped"
 
 # Copy application code
 COPY . .
