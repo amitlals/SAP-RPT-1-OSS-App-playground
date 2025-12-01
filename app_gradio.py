@@ -47,25 +47,28 @@ def _ensure_hf_folder_compat():
 
 
 def _patch_gradio_client_schema_bug():
-    """Patch gradio_client's JSON schema parser to handle boolean schema values."""
+    """Patch gradio_client's JSON schema parser to handle boolean schemas."""
     try:
         from gradio_client import utils as client_utils
     except (ImportError, AttributeError):
         return
     
-    original_get_type = getattr(client_utils, 'get_type', None)
-    if not original_get_type:
+    # Patch json_schema_to_python_type to catch and handle the error
+    original_json_to_type = getattr(
+        client_utils, 'json_schema_to_python_type', None
+    )
+    if not original_json_to_type:
         return
     
-    def patched_get_type(schema):
-        """Wrapper that handles the case where schema is a boolean."""
-        if isinstance(schema, bool):
-            # If schema is True, it matches anything; if False, it matches nothing
-            # Return str as a safe default
+    def patched_json_to_type(schema, defs=None):
+        """Safely handle JSON schema parsing for boolean schemas."""
+        try:
+            return original_json_to_type(schema, defs)
+        except Exception:
+            # If schema parsing fails (e.g., boolean schema), return str
             return str
-        return original_get_type(schema)
     
-    client_utils.get_type = patched_get_type
+    client_utils.json_schema_to_python_type = patched_json_to_type
 
 
 _ensure_hf_folder_compat()
