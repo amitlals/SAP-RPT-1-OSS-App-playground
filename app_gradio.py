@@ -9,6 +9,45 @@ Main Gradio application with tabs:
 - OData: Connect to SAP OData services
 """
 
+import importlib
+import os
+
+
+def _ensure_hf_folder_compat():
+    """Reintroduce gradio's expected huggingface_hub.HfFolder symbol."""
+    try:
+        from huggingface_hub import HfFolder  # noqa: F401
+        return
+    except ImportError:
+        pass
+
+    try:
+        hub_module = importlib.import_module("huggingface_hub")
+    except ModuleNotFoundError:
+        return
+
+    if hasattr(hub_module, "HfFolder"):
+        return
+
+    class _CompatHfFolder:
+        @staticmethod
+        def get_token(token_path=None):
+            return os.getenv("HUGGINGFACE_TOKEN")
+
+        @staticmethod
+        def save_token(token, token_path=None):
+            if token:
+                os.environ["HUGGINGFACE_TOKEN"] = token
+
+        @staticmethod
+        def delete_token(token_path=None):
+            os.environ.pop("HUGGINGFACE_TOKEN", None)
+
+    hub_module.HfFolder = _CompatHfFolder
+
+
+_ensure_hf_folder_compat()
+
 import gradio as gr
 print(f"Gradio version: {gr.__version__}")
 import pandas as pd
