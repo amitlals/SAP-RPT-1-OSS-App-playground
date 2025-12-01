@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 RUN pip install --no-cache-dir git+https://github.com/SAP-samples/sap-rpt-1-oss
 
 # Force Gradio 4.x to be installed LAST (override any conflicting dependencies)
-RUN pip install --no-cache-dir --force-reinstall "gradio>=4.0.0"
+RUN pip install --no-cache-dir --force-reinstall "gradio==4.44.1"
 
 # Copy application code
 COPY . .

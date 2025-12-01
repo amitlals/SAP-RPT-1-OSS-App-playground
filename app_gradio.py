@@ -917,17 +917,7 @@ def check_playground_embedding_server():
 
 
 # Create Gradio interface with vibrant theme
-with gr.Blocks(title="SAP Finance Dashboard", css="""
-    .gradio-container {
-        max-width: 1400px !important;
-    }
-    h1 {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-""") as app:
+with gr.Blocks(title="SAP Finance Dashboard") as app:
     gr.HTML("""
     <div style='text-align: center; margin-bottom: 20px;'>
         <h1 style='font-size: 42px; margin-bottom: 10px; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
