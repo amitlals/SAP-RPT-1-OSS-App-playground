@@ -25,9 +25,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Install compatible gradio version and then force-install huggingface-hub 0.24.7
-RUN pip install --no-cache-dir "gradio==5.6.0" && \
-    pip install --no-cache-dir --force-reinstall "huggingface-hub==0.24.7"
+# Install stable gradio version that avoids JSON schema regression
+RUN pip install --no-cache-dir "gradio==4.44.1"
 
 # Install SAP-RPT-1-OSS from GitHub (with --no-deps to avoid conflicts)
 RUN pip install --no-cache-dir --no-deps git+https://github.com/SAP-samples/sap-rpt-1-oss || echo "SAP-RPT-1-OSS installation skipped"
