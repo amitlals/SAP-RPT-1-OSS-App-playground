@@ -46,7 +46,30 @@ def _ensure_hf_folder_compat():
     hub_module.HfFolder = _CompatHfFolder
 
 
+def _patch_gradio_client_schema_bug():
+    """Patch gradio_client's JSON schema parser to handle boolean schema values."""
+    try:
+        from gradio_client import utils as client_utils
+    except (ImportError, AttributeError):
+        return
+    
+    original_get_type = getattr(client_utils, 'get_type', None)
+    if not original_get_type:
+        return
+    
+    def patched_get_type(schema):
+        """Wrapper that handles the case where schema is a boolean."""
+        if isinstance(schema, bool):
+            # If schema is True, it matches anything; if False, it matches nothing
+            # Return str as a safe default
+            return str
+        return original_get_type(schema)
+    
+    client_utils.get_type = patched_get_type
+
+
 _ensure_hf_folder_compat()
+_patch_gradio_client_schema_bug()
 
 import gradio as gr
 print(f"Gradio version: {gr.__version__}")
