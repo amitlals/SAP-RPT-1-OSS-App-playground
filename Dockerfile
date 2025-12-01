@@ -28,8 +28,15 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Install stable gradio version that avoids JSON schema regression
 RUN pip install --no-cache-dir "gradio==4.44.1"
 
-# Install SAP-RPT-1-OSS from GitHub (with --no-deps to avoid conflicts)
-RUN pip install --no-cache-dir --no-deps git+https://github.com/SAP-samples/sap-rpt-1-oss || echo "SAP-RPT-1-OSS installation skipped"
+# Install SAP-RPT-1-OSS dependencies and package
+RUN pip install --no-cache-dir \
+    torch==2.0.0 \
+    transformers==4.30.0 \
+    scikit-learn==1.2.0 \
+    xgboost==1.7.0 \
+    lightgbm==3.3.5 \
+    catboost==1.2.0 && \
+    pip install --no-cache-dir git+https://github.com/SAP-samples/sap-rpt-1-oss || echo "SAP-RPT-1-OSS installation warning"
 
 # Copy application code
 COPY . .
