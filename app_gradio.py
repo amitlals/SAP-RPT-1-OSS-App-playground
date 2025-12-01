@@ -10,6 +10,7 @@ Main Gradio application with tabs:
 """
 
 import gradio as gr
+print(f"Gradio version: {gr.__version__}")
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -916,7 +917,7 @@ def check_playground_embedding_server():
 
 
 # Create Gradio interface with vibrant theme
-with gr.Blocks(title="SAP Finance Dashboard", theme=gr.themes.Soft(), css="""
+with gr.Blocks(title="SAP Finance Dashboard", css="""
     .gradio-container {
         max-width: 1400px !important;
     }
