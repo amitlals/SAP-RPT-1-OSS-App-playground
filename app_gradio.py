@@ -74,6 +74,23 @@ def _patch_gradio_client_schema_bug():
 _ensure_hf_folder_compat()
 _patch_gradio_client_schema_bug()
 
+# Setup HuggingFace authentication for gated model access
+def _setup_hf_auth():
+    """Authenticate with HuggingFace Hub using token from environment."""
+    try:
+        from huggingface_hub import login
+        
+        hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACE_TOKEN")
+        if hf_token:
+            login(token=hf_token, add_to_git_credential=False)
+            print("✓ HuggingFace authentication configured")
+        else:
+            print("⚠ HF_TOKEN not found. Gated model access will fail if not already cached.")
+    except Exception as e:
+        print(f"⚠ HuggingFace auth setup failed: {e}")
+
+_setup_hf_auth()
+
 import gradio as gr
 print(f"Gradio version: {gr.__version__}")
 import pandas as pd
