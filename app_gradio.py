@@ -1459,5 +1459,6 @@ if __name__ == "__main__":
         server_name=server_name,
         server_port=server_port,
         share=False,
-        show_error=True
+        show_error=True,
+        show_api=False
     )
