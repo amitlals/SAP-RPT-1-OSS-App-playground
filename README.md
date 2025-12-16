@@ -131,6 +131,10 @@ SAP-RPT-1-OSS-App/
 └── .env.example
 ```
 
+## Contributors
+
+- [GitHub Copilot](https://github.com/features/copilot) - AI pair programmer
+
 ## License
 
 This project is licensed under the Apache Software License, version 2.0.
