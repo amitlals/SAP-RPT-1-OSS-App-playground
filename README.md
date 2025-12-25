@@ -1,6 +1,6 @@
 # 🚀 SAP RPT-1-OSS | AI-Powered Enterprise ML Suite
 
-**Three production-ready applications demonstrating TabPFN's In-Context Learning for SAP enterprise data**
+**Three production-ready applications demonstrating SAP-RPT-1-OSS's In-Context Learning for SAP enterprise data**
 
 [![HuggingFace](https://img.shields.io/badge/🤗-HuggingFace%20Spaces-yellow)](https://huggingface.co/amitgpt)
 [![Azure](https://img.shields.io/badge/☁️-Azure%20Container%20Apps-blue)](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/)
@@ -13,8 +13,9 @@
 | # | App | Description | Live Demo |
 |---|-----|-------------|-----------|
 | 1 | **Finance Dashboard** | SAP financial statement analysis & profitability prediction | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-finance-dashboard-RPT-1-OSS) |
-| 2 | **Forecast Showdown** | TabPFN vs LLM comparison on numeric forecasting | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-rpt1-forecast-showdown) \| [☁️ Azure](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/) |
+| 2 | **Forecast Showdown** | RPT-1 vs LLM comparison on numeric forecasting | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-rpt1-forecast-showdown)|
 | 3 | **Predictive Integrity** | Proactive SAP operations risk prediction (Jobs, Transports, Interfaces) | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-predictive-integrity-using-RPT-1) |
+| 4 | **SAP Local RPT-1 Workspace** | SAP-RPT-1-OSS on Microsoft Foundry Hosted |[☁️ Azure](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/) |
 
 ---
 
@@ -30,7 +31,7 @@ SAP-RPT-1-OSS-App/
 │   │   ├── Dockerfile
 │   │   └── README.md
 │   │
-│   ├── 02-forecast-showdown/         # App 2: TabPFN vs LLM
+│   ├── 02-forecast-showdown/         # App 2: RPT-1 vs LLM
 │   │   ├── app.py
 │   │   ├── api.py
 │   │   ├── requirements.txt
@@ -73,7 +74,7 @@ SAP-RPT-1-OSS-App/
 
 | Component | Technology |
 |-----------|------------|
-| **ML Model** | [TabPFN](https://tabpfn.com) - Foundation Model for Tabular Data |
+| **ML Model** | [RPT-1](https://github.com/SAP-samples/sap-rpt-1-oss) - Foundation Model for Tabular Data |
 | **Frontend** | Streamlit |
 | **Backend** | FastAPI |
 | **Cloud** | Azure Container Apps, HuggingFace Spaces |
