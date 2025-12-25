@@ -1,0 +1,10 @@
+# Hugging Face Spaces - SAP Predictive Integrity
+# Python 3.11+ required
+# Copy to hf_predictive_integrity/requirements.txt before uploading
+
+streamlit>=1.28.0
+tabpfn-client>=0.2.0
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+python-dotenv>=1.0.0
