@@ -1,50 +1,99 @@
-# SAP RPT-1-OSS | AI-Powered Tabular ML
+# 🚀 SAP RPT-1-OSS | AI-Powered Enterprise ML Suite
 
-**Enterprise-grade machine learning predictions for SAP data using In-Context Learning**
+**Three production-ready applications demonstrating TabPFN's In-Context Learning for SAP enterprise data**
 
-🔗 **Live Demo**: [https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/)
-
----
-
-## 🎯 Overview
-
-This application provides AI-powered predictions for SAP enterprise data using the [TabPFN](https://www.tabpfn.com/) model - a foundation model for tabular data that uses **In-Context Learning** (no traditional training required).
-
-### Key Capabilities
-
-| Use Case | Description |
-|----------|-------------|
-| **Sales Order Status** | Predict delivery status (On-Time, Delayed, Cancelled) |
-| **Revenue Forecasting** | Forecast order amounts and financial metrics |
-| **Profitability Analysis** | Classify accounts as Profitable or Loss-making |
-| **Custom Predictions** | Generic classification/regression on any tabular data |
+[![HuggingFace](https://img.shields.io/badge/🤗-HuggingFace%20Spaces-yellow)](https://huggingface.co/amitgpt)
+[![Azure](https://img.shields.io/badge/☁️-Azure%20Container%20Apps-blue)](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## 🏗️ Architecture
+## 📦 Applications
+
+| # | App | Description | Live Demo |
+|---|-----|-------------|-----------|
+| 1 | **Finance Dashboard** | SAP financial statement analysis & profitability prediction | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-finance-dashboard-RPT-1-OSS) |
+| 2 | **Forecast Showdown** | TabPFN vs LLM comparison on numeric forecasting | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-rpt1-forecast-showdown) \| [☁️ Azure](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/) |
+| 3 | **Predictive Integrity** | Proactive SAP operations risk prediction (Jobs, Transports, Interfaces) | [🤗 HuggingFace](https://huggingface.co/spaces/amitgpt/sap-predictive-integrity-using-RPT-1) |
+
+---
+
+## 🏗️ Repository Structure
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Azure Container Apps                      │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐    ┌─────────────────────────────────┐ │
-│  │   Streamlit UI  │───▶│       FastAPI Backend           │ │
-│  │   (Port 8501)   │    │       (Port 8000)               │ │
-│  └─────────────────┘    └───────────────┬─────────────────┘ │
-│                                         │                    │
-│                                         ▼                    │
-│                              ┌─────────────────────┐        │
-│                              │   TabPFN Cloud API  │        │
-│                              │   (PriorLabs)       │        │
-│                              └─────────────────────┘        │
-└─────────────────────────────────────────────────────────────┘
+SAP-RPT-1-OSS-App/
+│
+├── 📁 apps/                          # Application packages
+│   ├── 01-finance-dashboard/         # App 1: Financial Analysis
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── Dockerfile
+│   │   └── README.md
+│   │
+│   ├── 02-forecast-showdown/         # App 2: TabPFN vs LLM
+│   │   ├── app.py
+│   │   ├── api.py
+│   │   ├── requirements.txt
+│   │   ├── Dockerfile
+│   │   └── README.md
+│   │
+│   └── 03-predictive-integrity/      # App 3: Operations Risk
+│       ├── app.py
+│       ├── utils/
+│       ├── requirements.txt
+│       ├── Dockerfile
+│       └── README.md
+│
+├── 📁 deploy/                        # Deployment configurations
+│   ├── azure/                        # Azure Container Apps
+│   │   ├── Dockerfile
+│   │   ├── deploy-azure.ps1
+│   │   ├── supervisord.conf
+│   │   └── README.md
+│   │
+│   └── huggingface/                  # HuggingFace Spaces
+│       └── README.md
+│
+├── 📁 shared/                        # Shared utilities
+│   ├── data/                         # Sample datasets
+│   ├── models/                       # Model utilities
+│   └── utils/                        # Common helpers
+│
+├── 📁 docs/                          # Documentation
+│   ├── ARCHITECTURE.md
+│   ├── API_REFERENCE.md
+│   └── DEPLOYMENT_GUIDE.md
+│
+└── README.md                         # This file
 ```
+
+---
+
+## 🎯 Technology Stack
+
+| Component | Technology |
+|-----------|------------|
+| **ML Model** | [TabPFN](https://tabpfn.com) - Foundation Model for Tabular Data |
+| **Frontend** | Streamlit |
+| **Backend** | FastAPI |
+| **Cloud** | Azure Container Apps, HuggingFace Spaces |
+| **Container** | Docker |
 
 ---
 
 ## 🚀 Quick Start
 
-### Local Development
+### Prerequisites
+
+```bash
+# Python 3.10+
+python --version
+
+# Get TabPFN token from https://tabpfn.com
+export TABPFN_ACCESS_TOKEN="your_token_here"
+```
+
+### Run Locally
 
 ```bash
 # Clone the repo
@@ -54,78 +103,75 @@ cd SAP-RPT-1-OSS-App-playground
 # Install dependencies
 pip install -r requirements.txt
 
-# Set TabPFN token
-python -c "from tabpfn_client import set_access_token; set_access_token('YOUR_TOKEN')"
-
-# Start API server
-uvicorn sap_rpt1_api:app --host 0.0.0.0 --port 8000
-
-# Start Streamlit (new terminal)
-streamlit run sap_rpt1_frontend.py --server.port 8501
-```
-
-### Get TabPFN Token
-
-1. Go to [tabpfn.com](https://www.tabpfn.com/)
-2. Sign up for free account
-3. Get your API token
-
----
-
-## 📁 Project Structure
-
-```
-SAP-RPT-1-OSS-App/
-├── sap_rpt1_api.py        # FastAPI REST API
-├── sap_rpt1_frontend.py   # Streamlit web UI
-├── Dockerfile.azure       # Container image for Azure
-├── supervisord.conf       # Process manager config
-├── start.sh               # Container startup script
-├── requirements.txt       # Python dependencies
-├── data/                  # Sample SAP datasets
-├── models/                # Model utilities
-└── utils/                 # Helper functions
+# Run any app
+streamlit run apps/01-finance-dashboard/app.py
+streamlit run apps/02-forecast-showdown/app.py
+streamlit run apps/03-predictive-integrity/app.py
 ```
 
 ---
 
-## 🔌 API Endpoints
+## 🤗 Deploy to HuggingFace
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Health check |
-| GET | `/docs` | Swagger UI |
-| POST | `/predict/sales-status` | Predict order delivery status |
-| POST | `/predict/revenue` | Forecast order amounts |
-| POST | `/predict/profitability` | Predict financial profitability |
-| POST | `/predict/classification` | Generic classification |
-| POST | `/predict/regression` | Generic regression |
+1. Create a new Space at [huggingface.co/new-space](https://huggingface.co/new-space)
+2. Select **Docker** as SDK
+3. Copy the contents of the desired app folder
+4. Add secrets:
+   - `TABPFN_ACCESS_TOKEN` - From [tabpfn.com](https://tabpfn.com)
+   - `SAP_RPT1_TOKEN` (optional) - For SAP-RPT-1 Closed API
 
----
-
-## ☁️ Azure Deployment
-
-Deployed on **Azure Container Apps** with:
-
-| Component | Value |
-|-----------|-------|
-| **Resource Group** | sap-rpt1-secure-rg |
-| **Container Registry** | saprpt1acr.azurecr.io |
-| **Container App** | sap-rpt1-oss-app |
-| **Region** | East US 2 |
-| **Scaling** | 1-3 replicas |
-
-See [DEPLOYMENT_API.md](DEPLOYMENT_API.md) for full deployment instructions.
+See [deploy/huggingface/README.md](deploy/huggingface/README.md) for details.
 
 ---
 
-## 👤 Author
+## ☁️ Deploy to Azure
 
-**Amit Lal**  
-🔗 [aka.ms/amitlal](https://aka.ms/amitlal)
+```powershell
+# From repository root
+cd deploy/azure
+./deploy-azure.ps1
+```
+
+See [deploy/azure/README.md](deploy/azure/README.md) for details.
 
 ---
 
-## 📄 License
+## 📊 Sample Data
 
-Apache 2.0
+All apps use synthetic SAP-like datasets:
+
+| Dataset | Description | SAP Tables Referenced |
+|---------|-------------|----------------------|
+| `synthetic_financial_statements.csv` | Balance sheet & income data | BSEG, BKPF, T001 |
+| `synthetic_gl_accounts.csv` | General ledger accounts | SKA1, SKAT |
+| `synthetic_sales_orders.csv` | Sales order history | VBAK, VBAP, LIKP |
+
+---
+
+## 🏷️ SAP Table References
+
+### App 3: Predictive Integrity
+
+| Scenario | SAP Tables | Key Fields |
+|----------|------------|------------|
+| **Job Failure** | TBTCO, TBTCP | JOBNAME, STATUS, SDLUNAME |
+| **Transport Failure** | E070, E071 | TRKORR, TRSTATUS, AS4USER |
+| **Interface Failure** | EDIDC, EDIDS | DOCNUM, STATUS, MESTYP |
+
+---
+
+## 📝 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [PriorLabs](https://priorlabs.ai/) - TabPFN creators
+- [SAP](https://www.sap.com/) - Enterprise software inspiration
+- [Streamlit](https://streamlit.io/) - UI framework
+
+---
+
+**⚠️ Disclaimer**: This project uses synthetic data for demonstration purposes. SAP® is a registered trademark of SAP SE. This project is not affiliated with or endorsed by SAP SE.
