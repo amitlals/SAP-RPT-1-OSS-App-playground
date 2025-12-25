@@ -87,4 +87,4 @@ Uses synthetic SAP financial data including:
 
 ---
 
-*Powered by [TabPFN](https://tabpfn.com) - Foundation Model for Tabular Data*
+*Powered by [SAP-RPT-1-OSS](https://sap.com/rpt-1) - Foundation Model for Tabular Data*
