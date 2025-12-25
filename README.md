@@ -18,6 +18,9 @@
 | 4 | **SAP Local RPT-1 Workspace** | SAP-RPT-1-OSS on Microsoft Foundry Hosted |[☁️ Azure](https://sap-rpt1-oss-app.wonderfulground-a83887c1.eastus2.azurecontainerapps.io/) |
 
 ---
+<img width="1124" height="629" alt="image" src="https://github.com/user-attachments/assets/fe9bf40e-100f-4b11-95e1-b79255e47f68" /> <br>
+<img width="1100" height="583" alt="image" src="https://github.com/user-attachments/assets/b2a8e0f5-ee1b-45e0-bf1a-64ce9d57e8a2" />
+
 
 ## 🏗️ Repository Structure
 
