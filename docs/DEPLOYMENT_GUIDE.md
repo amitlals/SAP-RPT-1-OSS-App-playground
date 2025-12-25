@@ -22,6 +22,7 @@
 - **Python 3.10+**
 - **TabPFN token** from [tabpfn.com](https://tabpfn.com)
 - **Git** for version control
+- **SAP RPT-1 API** Token from [SAP-RPT-1](https://rpt.cloud.sap/docs)  
 
 ### Optional
 
