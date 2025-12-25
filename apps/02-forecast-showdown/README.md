@@ -1,4 +1,4 @@
-# 🎯 Forecast Showdown: TabPFN vs LLM
+# 🎯 Forecast Showdown: SAP RPT-1-OSS vs LLM
 
 **Demonstrates why specialized Tabular ML beats general-purpose LLMs on numeric pattern recognition**
 
@@ -10,7 +10,7 @@
 
 ## 🎯 Overview
 
-Side-by-side comparison of TabPFN (specialized tabular ML) vs GPT-4 (general-purpose LLM) on SAP financial forecasting tasks. Proves that purpose-built models outperform LLMs on structured data.
+Side-by-side comparison of SAP RPT-1 (specialized tabular ML) vs GPT-4 (general-purpose LLM) on SAP financial forecasting tasks. Proves that purpose-built models outperform LLMs on structured data.
 
 ### Key Insights
 
