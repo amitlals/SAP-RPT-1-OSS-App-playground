@@ -163,6 +163,8 @@ All apps use synthetic SAP-like datasets:
 | **Interface Failure** | EDIDC, EDIDS | DOCNUM, STATUS, MESTYP |
 
 ---
+## 📦 Claude Skills - SAP-RP-1-Predictor-Skills
+### See [Claude Skills](https://github.com/amitlals/sap-rpt1-oss-predictor?tab=readme-ov-file#sap-rpt-1-oss-predictor-skill)
 
 ## 📝 License
 
